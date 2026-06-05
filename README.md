@@ -8,12 +8,11 @@
 
 <h1 align="center">GEEMu Skill</h1>
 
-Full name: **Google Earth Engine Master Utility (GEEMu)**.
+**Google Earth Engine Master Utility (GEEMu)**.
 
-中文全名：**Google Earth Engine Master Utility**，其中 `U` 取
-`Utility`，强调它是一个面向 GEE/geemap 的实用研究工作流工具。
 
-GEEMu is a compact full skill folder for OpenAI Codex and Claude Code. It helps
+
+Google Earth Engine Master Utility (GEEMu) is a compact full skill folder for OpenAI Codex and Claude Code. It helps
 write Google Earth Engine (GEE) Python workflows with geemap. It is designed for
 research-grade remote sensing tasks where the assistant must first check the
 local environment, understand the study design, reason about data and
