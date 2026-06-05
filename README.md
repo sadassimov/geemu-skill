@@ -82,12 +82,6 @@ Windows users can use these equivalent locations:
 - Codex: `%USERPROFILE%\.codex\skills\GEEMu`
 - Claude Code: `%USERPROFILE%\.claude\skills\GEEMu`
 
-After installation, start a new Codex or Claude Code session and use a prompt
-such as: "Use GEEMu to design a GEE/geemap workflow for my study area."
-
-安装完成后，重新打开一个 Codex 或 Claude Code 会话，然后直接说：
-“Use GEEMu ...” 或 “用 GEEMu ...”。
-
 ## Architecture / 架构
 
 GEEMu uses a layered design:
