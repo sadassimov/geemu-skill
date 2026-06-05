@@ -94,8 +94,7 @@ GEEMu uses a layered design:
   setup, research design, data selection, administrative/vector boundaries, and
   export strategy.
 - `gee_vector_db/`: a portable local knowledge database stored as JSONL text.
-  It is searched by lightweight keyword scoring and does not require embedding
-  model downloads or a separate vector-search runtime.
+  It is searched by lightweight keyword scoring.
 - `awesome-gee-community-datasets/community_datasets.csv`: a structured
   community dataset table used as one data-recommendation source.
 - `templates/`: standard `RUN.md` and `DATA_LAYER.md` records for documenting
@@ -114,7 +113,7 @@ GEEMu 的核心架构可以理解为：
   研究设计。
 - 参考层：把环境、代理、数据层、边界层、导出策略等细节拆到 `references/`。
 - 本地知识层：把本地经验和参考资料清洗成 `chunks.jsonl` / `documents.jsonl`，
-  用关键词检索，不需要额外下载 embedding 模型。
+  用关键词检索.
 - 数据建议层：使用社区数据表和本地知识库辅助选择 GEE 数据集。
 - 记录层：每次代码任务都应留下 `RUN.md` 和 `DATA_LAYER.md`，说明研究区、
   数据变换、分辨率、阈值、导出参数和关键假设。
