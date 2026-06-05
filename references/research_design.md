@@ -50,6 +50,19 @@ If the study area is large or complex, propose a bbox-first filter and exact ROI
 for final statistics/export. If the user only gives a place name, suggest 2-3
 boundary sources and ask for confirmation when the choice changes meaning.
 
+### Administrative boundary sources
+
+For administrative units, default to **FAO GAUL 2015** in the Earth Engine
+catalog: `FAO/GAUL/2015/level0` (country), `level1` (province/state), `level2`
+(prefecture / county level). **GADM is not available as a public GEE asset**, so
+do not try `ee.FeatureCollection("GADM/...")`. Filter GAUL on `ADM0_NAME`,
+`ADM1_NAME`, or `ADM2_NAME`. Names are GAUL's romanized forms, e.g. for China:
+`ADM0_NAME = "China"`, `ADM1_NAME = "Sichuan Sheng"`, `ADM2_NAME =
+"Liangshan Yi Zu Zizhizhou"`. Spelling varies, so verify the exact string with a
+quick `.filter(...).size()` or `.aggregate_array("ADM2_NAME")` before relying on
+it. For boundaries finer than GAUL level 2, ask the user for an uploaded asset or
+a local vector file instead.
+
 ## Analysis Scale Checks
 
 Record:

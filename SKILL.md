@@ -8,6 +8,29 @@ description: Use when Codex needs to answer questions or write Python code for G
 Use this skill to write practical Google Earth Engine and geemap workflows from
 the bundled GEEMu references and local vector knowledge base.
 
+## Start Here: Project ID First, Then Verify
+
+The first action in every GEEMu task — before retrieval, research design, or any
+code — is to establish the Cloud Project ID and verify the environment, in order:
+
+1. **Ask the user for their Earth Engine Cloud Project ID** if it was not already
+   given. Do not guess it and do not continue without it; every online Earth
+   Engine call needs `Initialize(project=...)`. (Tip: the user can set
+   `EE_PROJECT` once to avoid re-entering it each session.)
+2. **Verify the environment** with that Project ID: confirm `ee` and `geemap`
+   import, Earth Engine credentials exist, and
+   `geemap.ee_initialize(project="<PROJECT_ID>")` (or
+   `ee.Initialize(project="<PROJECT_ID>")`) succeeds. The deterministic check is
+   `python scripts/check_local_environment.py --project <PROJECT_ID>`.
+3. Only after the Project ID is confirmed and initialization succeeds, continue
+   to retrieval, research design, and code.
+
+If verification fails, diagnose in this order: (1) **restricted network — check
+the `HTTP_PROXY` / `HTTPS_PROXY` environment variables first**, since blocked
+Google connectivity is the most common cause (see `references/network_proxy.md`);
+(2) missing credentials → run `earthengine authenticate`; (3) other errors → see
+`references/local_environment.md`. Resolve this before writing task code.
+
 ## Included Knowledge
 
 - `gee_vector_db/`: portable local knowledge database derived from the full
@@ -138,6 +161,10 @@ overwrite old run folders.
 - Do not hard-code private project IDs, asset IDs, local paths, proxy
   credentials, tokens, or cookies. Use placeholders like `PROJECT_ID`,
   `ROI_ASSET`, `TILE_ASSET`, and `EXPORT_FOLDER`.
+- For administrative boundaries use `FAO/GAUL/2015/level0|1|2` (filter on
+  `ADM0_NAME` / `ADM1_NAME` / `ADM2_NAME`); GADM is not a public GEE asset. Names
+  are romanized, e.g. China `ADM1_NAME="Sichuan Sheng"` — verify the exact string
+  before relying on it. See `references/research_design.md`.
 - If local vector data is provided, prefer `geemap.shp_to_ee`,
   `geemap.geojson_to_ee`, or `geemap.gdf_to_ee` after checking CRS, geometry
   type, and feature count.
