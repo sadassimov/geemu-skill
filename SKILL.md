@@ -71,6 +71,34 @@ Ask clarifying questions when missing information changes correctness, cost,
 network access, or data meaning. If a missing value is routine, use an explicit
 placeholder and record the assumption.
 
+## Confirm Before Running
+
+Before running a task or executing final code against Earth Engine, restate the
+key choices and ask the user to confirm or adjust them. Earth Engine runs cost
+compute, and resolution / region / output choices are easy to get wrong, so a
+short confirmation prevents wasted runs, surprise costs, and files landing in the
+wrong place.
+
+Confirm at least:
+
+- Output target: local GeoTIFF download (where on disk?), Google Drive export,
+  Earth Engine Asset, map preview only, or a numeric/CSV summary. Each is a
+  different code path and cost profile, so always confirm which one.
+- Analysis scale / resolution: the compute and export scale in meters, and
+  whether it is the dataset's native resolution or a coarser test scale.
+- Study area / ROI and time range.
+- Dataset and key transforms (bands, masks, thresholds) when not already fixed.
+- Cost / size risk: region extent, pixel count, number of tiles or export tasks.
+
+Present this as a short, concrete summary (a few lines or a small table) with
+sensible defaults drawn from local knowledge, so the user can confirm in one
+step. Do not re-ask values the user already gave. Use the research-design gate to
+derive the options, then confirm them here.
+
+Run the workflow only after the choices are confirmed. Pair this with the export
+guardrails below: show the resolved plan with `--dry-run`, get confirmation, then
+run with `--export` for any task that writes data or starts a batch job.
+
 ## Output Artifacts
 
 Every generated or revised GEE/geemap task should save:
