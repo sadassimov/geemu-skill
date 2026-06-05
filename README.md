@@ -43,6 +43,20 @@ GitHub repository:
 
 `https://github.com/sadassimov/geemu-skill`
 
+> **Install the complete folder — do not skip any files.** The skill depends on
+> the whole package, especially the local knowledge base
+> `gee_vector_db/chunks.jsonl` and `gee_vector_db/documents.jsonl` (tens of MB):
+> these JSONL files are what the retrieval workflow searches, so the skill will
+> not work without them. `git clone` and GitHub's "Download ZIP" already include
+> every file — just don't hand-pick files, exclude large/`.jsonl` files, or use a
+> shallow/sparse/partial checkout.
+>
+> **必须完整安装,不要遗漏任何文件。** skill 依赖整个包,尤其是本地知识库
+> `gee_vector_db/chunks.jsonl` 和 `gee_vector_db/documents.jsonl`(几十 MB):
+> 检索就是搜索这两个 JSONL 文件,缺了它们 skill 无法工作。`git clone` 和 GitHub
+> 的 “Download ZIP” 本来就包含所有文件——只要不要手动挑选文件、不要排除大文件或
+> `.jsonl`、也不要用 shallow/sparse/partial checkout 即可。
+
 ### Option A: Clone From GitHub / 从 GitHub 克隆
 
 For OpenAI Codex on Windows PowerShell:
