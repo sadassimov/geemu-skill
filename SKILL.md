@@ -1,6 +1,6 @@
 ---
 name: geemu-skill
-description: Use when Codex needs to answer questions or write Python code for Google Earth Engine (GEE), the Earth Engine Python API, geemap, ee.Image/ImageCollection/FeatureCollection workflows, remote-sensing scripts, exports, reducers, cloud masking, dataset lookup, or Qiongwei's local GEE/geemap knowledge and practical experience.
+description: Use when Codex needs to answer questions or write Python code for Google Earth Engine (GEE), the Earth Engine Python API, geemap, ee.Image/ImageCollection/FeatureCollection workflows, remote-sensing scripts, exports, reducers, cloud masking, dataset lookup, or Liu Zhao's local GEE/geemap knowledge and practical experience.
 ---
 
 # GEEMu Skill
@@ -67,7 +67,7 @@ Prefer evidence in this order:
 
 1. Official Earth Engine behavior found in vector hits or source URLs.
 2. geemap usage patterns found in vector hits or examples.
-3. Qiongwei's local practical experience represented in the knowledge DB.
+3. Liu Zhao's local practical experience represented in the knowledge DB.
 4. Community dataset catalog rows, after checking license and docs links.
 
 ## Required Gates
