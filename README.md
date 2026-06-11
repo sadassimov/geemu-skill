@@ -115,8 +115,9 @@ GEEMu uses a layered design:
   parameter choices, data transforms, scale, region, export settings, and
   assumptions.
 - `examples/`: complete reference tasks, including Sentinel-2 NDVI, tiled export,
-  geemap local download, community dataset recommendation, and NSW dNBR/NBR
-  recovery.
+  geemap local download, community dataset recommendation, NSW dNBR/NBR recovery,
+  Landsat water-frequency mapping, Random Forest regression (GEE + scikit-learn),
+  stratified 256x256 sample chips, and deep-learning water inference.
 - `scripts/check_local_environment.py`: a deterministic checker for local
   Python, geemap, Earth Engine credentials, project ID, and geemap vector helper
   availability.
@@ -237,6 +238,47 @@ Use prompts like these with Codex or Claude Code after installing the skill.
 > 用 GEEMu 帮我为干旱、气候、火灾或植被监测任务推荐 GEE 数据集。请检索本地
 > 知识库和社区数据表，比较空间分辨率、时间覆盖、变量含义、局限性和导出
 > 可行性，再决定是否写代码。
+
+### Landsat Water-Frequency / Landsat 水体频率
+
+> Use GEEMu to map multi-year surface-water frequency from Landsat surface
+> reflectance for my study area: mask clouds, compute NDVI/NDWI/MNDWI/EVI, flag
+> water, remove hill shadow / high HAND / steep slopes, aggregate a yearly water
+> frequency, classify it into none/seasonal/permanent, overlay GAIA impervious
+> surface, and export. Use Landsat Collection 2.
+
+> 用 GEEMu 基于 Landsat 地表反射率做多年水体频率制图：去云，算 NDVI/NDWI/MNDWI/EVI，
+> 判定水体，去除山体阴影/高 HAND/陡坡，聚合逐年频率，分 无/季节/永久 三类，叠加 GAIA
+> 不透水面并导出。请用 Landsat C02。
+
+### Random Forest Regression (GEE + scikit-learn) / 随机森林回归
+
+> Use GEEMu to train a Random Forest regression combining GEE and a local
+> scikit-learn model: build a Landsat composite with spectral indices, sample it
+> at my labelled points, export a training CSV, fit RandomForestRegressor, convert
+> the trees to an Earth Engine classifier with geemap.ml, and apply it.
+
+> 用 GEEMu 训练结合 GEE 与本地 scikit-learn 的随机森林回归：构建带光谱指数的 Landsat
+> 合成影像，在标注点采样，导出训练 CSV，训练 RandomForestRegressor，用 geemap.ml 转成
+> Earth Engine 分类器并应用。
+
+### Stratified Sample Chips / 分层抽样切片
+
+> Use GEEMu to generate 256x256 training chips by stratified sampling: use ESRI
+> 10 m LULC water as the label and a Sentinel-2 median as the image; sample 100
+> points over my ROI and download label + image chips in parallel.
+
+> 用 GEEMu 通过分层抽样生成 256x256 训练切片：用 ESRI 10m 土地覆盖（水体）作 label，
+> Sentinel-2 median 作影像，在 ROI 上抽 100 个点，并行下载 label 和影像切片。
+
+### Deep-Learning Water Inference / 深度学习水体推理
+
+> Use GEEMu to run deep-learning surface-water inference: export Sentinel-2 tiles
+> over my ROI with a fishnet, run a pretrained WatNet model on each tile, write a
+> binary water-map GeoTIFF, and show how to upload the result with geeup.
+
+> 用 GEEMu 做深度学习地表水推理：用 fishnet 切块导出 Sentinel-2 瓦片，对每块用预训练
+> WatNet 推理，输出二值水体 GeoTIFF，并说明如何用 geeup 上传结果。
 
 ## License & Notices / 许可与声明
 
